@@ -6,39 +6,47 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 
-const ModCards = ({imageSource, text}) => {
+const ModCards = ({imageSource, text, subtext}) => {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
       onPress={() => {
-        navigation.navigate('Mod', {imageSource, text});
+        navigation.navigate('Mod', {imageSource, text, subtext});
       }}>
-      <ImageBackground
-        source={imageSource}
+      <View
         style={{
-          overflow: 'hidden',
-          borderRadius: wp(10),
-          opacity: 0.7,
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginTop: wp(3),
         }}>
-        <View
+        <ImageBackground
+          source={imageSource}
           style={{
+            overflow: 'hidden',
             borderRadius: wp(10),
-            width: wp('40%'),
-            height: hp('20%'),
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundColor: 'rgba(0, 0, 0, 0.7)',
+            opacity: 0.8,
+            margin: wp(1),
           }}>
-          <Text
+          <View
             style={{
-              fontFamily: 'Dosis-Bold',
-              fontSize: wp(6),
-              color: 'white',
+              borderRadius: wp(10),
+              width: wp('44%'),
+              height: hp('22%'),
+              justifyContent: 'center',
+              alignItems: 'center',
+              backgroundColor: 'rgba(0, 0, 0, 0.7)',
             }}>
-            {text}
-          </Text>
-        </View>
-      </ImageBackground>
+            <Text
+              style={{
+                fontFamily: 'Dosis-Bold',
+                fontSize: wp(6),
+                color: 'white',
+              }}>
+              {text}
+            </Text>
+          </View>
+        </ImageBackground>
+      </View>
     </TouchableOpacity>
   );
 };

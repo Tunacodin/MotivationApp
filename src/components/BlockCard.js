@@ -1,42 +1,74 @@
 import React from 'react';
-import {Pressable, ImageBackground, View, Text} from 'react-native';
+import {
+  Pressable,
+  ImageBackground,
+  View,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import {useNavigation} from '@react-navigation/native';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 
-const BlockCard = () => {
+const BlockCard = ({imageSource, text, subtext}) => {
   return (
-    <Pressable>
-      <ImageBackground
-        source={imageSource}
+    <TouchableOpacity
+      activeOpacity={0.8}
+      underlayColor="black"
+      style={{
+        width: wp(95),
+        height: hp(30),
+        marginVertical: hp(0.5),
+        alignSelf: 'center',
+        flexDirection: 'column',
+        backgroundColor: 'white',
+        borderRadius: 12,
+        borderWidth: 1,
+        shadowColor: 'black',
+        shadowOffset: {width: -4, height: 10},
+        shadowRadius: 8,
+        shadowOpacity: 1,
+        elevation: 17,
+      }}>
+      <View
         style={{
-          overflow: 'hidden',
-          borderRadius: wp(10),
-          opacity: 0.7,
+          width: wp(95),
+          backgroundColor: 'black',
+
+          height: hp(5),
+          borderColor: 'black',
+          shadowColor: 'purple',
+          shadowOffset: {width: 4, height: 16},
+          shadowOpacity: 1,
+          shadowRadius: 1,
+          elevation: 18,
+          backgroundColor: 'black',
+          borderTopStartRadius: 12,
+          borderTopEndRadius: 12,
+          borderWidth: 1,
+        }}></View>
+      <View
+        style={{
+          flex: 1,
+          flexDirection: 'column',
+          justifyContent: 'space-evenly',
         }}>
-        <View
+        <Text
           style={{
-            borderRadius: wp(10),
-            width: wp('40%'),
-            height: hp('20%'),
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundColor: 'rgba(0, 0, 0, 0.7)',
+            fontSize: wp(6),
+            color: 'black',
+            textAlign: 'center',
+            fontFamily: 'Dosis-Medium',
+            paddingVertical: hp(2),
+            paddingHorizontal: wp(2),
           }}>
-          <Text
-            style={{
-              fontFamily: 'Dosis-Bold',
-              fontSize: wp(6),
-              color: 'white',
-              opacity: 1,
-            }}>
-            {text}
-          </Text>
-        </View>
-      </ImageBackground>
-    </Pressable>
+          {subtext}
+        </Text>
+      </View>
+    </TouchableOpacity>
   );
 };
 
